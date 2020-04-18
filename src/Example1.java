@@ -3,6 +3,7 @@ public class Example1 {
         Orange or=new Orange();
         Fun var=System.out::println;
         var=or::two;
+        //message
     }
 }
 
