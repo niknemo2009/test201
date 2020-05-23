@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d94130dc-fe2d-4bc9-a6d5-12377b6e8335" name="Default Changelist" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/description.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/project-template.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP_labaratornie.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LB1/LB1.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\Mi Pro\IdeaProjects\OOP_labaratornie\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1cJvZpZS1v3hc6uieQpKdIRLwp3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
+      <module name="OOP_labaratornie" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d94130dc-fe2d-4bc9-a6d5-12377b6e8335" name="Default Changelist" comment="" />
+      <created>1590259568315</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590259568315</updated>
+    </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <created>1590260406241</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1590260406241</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="411" y="8" key="CommitChangelistDialog2" timestamp="1590261909569">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="411" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1590261909569" />
+    <state x="481" y="129" key="MultipleFileMergeDialog" timestamp="1590261311184">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="481" y="129" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1590261311184" />
+    <state x="277" y="56" key="SettingsEditor" timestamp="1590260491898">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1590260491898" />
+    <state x="503" y="147" key="VcsDiffUtil.ChangesDialog" timestamp="1590260938707">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="503" y="147" key="VcsDiffUtil.ChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1590260938707" />
+    <state x="545" y="205" key="git4idea.merge.GitMergeDialog" timestamp="1590260798097">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="545" y="205" key="git4idea.merge.GitMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1590260798097" />
+    <state x="491" y="205" key="git4idea.merge.GitPullDialog" timestamp="1590260636528">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="491" y="205" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1590260636528" />
+    <state x="599" y="327" key="git4idea.rebase.GitUnstructuredEditor" timestamp="1590261329958">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="599" y="327" key="git4idea.rebase.GitUnstructuredEditor/0.0.1536.824@0.0.1536.824" timestamp="1590261329958" />
+  </component>
+</project>
