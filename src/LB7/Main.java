@@ -46,11 +46,15 @@ public class Main {
         List<SEX> sexList = Arrays.asList(SEX.MALE, SEX.FEMALE);
         List<Enterprise> enterpriseList = Stream.generate(() -> m.get_random_enterprise(surnameList, sexList)).limit(1000).collect(Collectors.toList());
         //  інформація о середній зарплатні робітників-чоловіків
-        enterpriseList.stream().filter(e -> e.workerList.stream().mapToInt(Worker::getSalary).average().getAsDouble() > 5000).forEach(e -> System.out.println(e.workerList.stream().filter(w -> w.getSex() == SEX.MALE).mapToInt(Worker::getSalary).average().getAsDouble()));
+        enterpriseList.stream().filter(e -> e.workerList.stream().mapToInt(Worker::getSalary).average().getAsDouble() > 5000)
+        .forEach(e -> System.out.println(e.workerList.stream().filter(w -> w.getSex() == SEX.MALE).mapToInt(Worker::getSalary).average().getAsDouble()));
         //  інформація о середній зарплатні робітників-жiнок
-        enterpriseList.stream().filter(e -> e.workerList.stream().mapToInt(Worker::getSalary).average().getAsDouble() > 5000).forEach(e -> System.out.println(e.workerList.stream().filter(w -> w.getSex() == SEX.FEMALE).mapToInt(Worker::getSalary).average().getAsDouble()));
+        enterpriseList.stream().filter(e -> e.workerList.stream().mapToInt(Worker::getSalary).average().getAsDouble() > 5000)
+        .forEach(e -> System.out.println(e.workerList.stream().filter(w -> w.getSex() == SEX.FEMALE).mapToInt(Worker::getSalary).average().getAsDouble()));
         // відсоток підприємств, на яких середня зарплатня робітників-чоловіків перевищує аналогічний показник для робітників-жінок.
-        System.out.println(enterpriseList.stream().filter(e -> e.workerList.stream().mapToInt(Worker::getSalary).average().getAsDouble() > 5000 && e.workerList.stream().filter(w -> w.getSex() == SEX.MALE).mapToInt(Worker::getSalary).average().getAsDouble() > e.workerList.stream().filter(w -> w.getSex() == SEX.FEMALE).mapToInt(Worker::getSalary).average().getAsDouble()).count() * 100 / 1000 + "%");
+        System.out.println(enterpriseList.stream().filter(e -> e.workerList.stream().mapToInt(Worker::getSalary).average().getAsDouble() > 5000 &&
+        e.workerList.stream().filter(w -> w.getSex() == SEX.MALE).mapToInt(Worker::getSalary).average().getAsDouble() >
+        e.workerList.stream().filter(w -> w.getSex() == SEX.FEMALE).mapToInt(Worker::getSalary).average().getAsDouble()).count() * 100 / 1000 + "%");
         //
         Double[] arr1 = {1.5, 2.0, 3.2};
         Double[] arr2 = {1.0, 2.0, 3.0};
