@@ -1,148 +1,168 @@
 package LB6;
+
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+/*import org.junit.Assert;*/
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
 public class Main {
 
+    private Assertions Assert;
+
+    public Main() {
+    }
+    //1++ -Створіть метод, який дозволяє видаляти будь який елемент по індексу
+    // в одновимірному масиві int[] Новий масив повинен повертатися з методу.
+    public int[] delete_element(int index, int[] arr) throws ArrayIndexOutOfBoundsException {
+        if (index < 0 || index >= arr.length) {
+            throw new ArrayIndexOutOfBoundsException("Index " + Integer.toString(index) + " out of bounds for length " + Integer.toString(arr.length));
+        }
+        int[] tmp = new int[arr.length - 1];
+        int j = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (i != index) {
+                tmp[j] = arr[i];
+                j++;
+            }
+        }
+        return tmp;
+    }
+    //
+    //2++ - Створіть метод, який дозволяє порівняти 2 будь яких масиви int[] по складу.
+    // Масиви можуть відрізнятися по порядку елементів , но бути однаковими зі складу.
+    public boolean compare_arrays(int[] arr1, int[] arr2) {
+        if (arr1.length != arr2.length)
+            return false;
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        return Arrays.equals(arr1, arr2);
+    }
+    //
+    //3-Створіть метод , який може перевернути будь яку число int .
+    // Приклад - 357 на вході, метод поверне 753
+    public int reverse(int number) {
+        return Integer.parseInt(new StringBuilder(Integer.toString(number)).reverse().toString());
+    }
+    //
+    //4-Створіть метод, який дозволяє поєднати між собою
+    // масиви int[] та повернути результуючий масив з методу
+    public int[] stick_arrays(int[] arr1, int[] arr2) {
+        int general_length = 0;
+        int current_length = 0;
+        general_length = arr1.length + arr2.length;
+        int[] new_array = new int[general_length];
+        for (int i : arr1) {
+            new_array[current_length] = i;
+            current_length++;
+        }
+        for (int i : arr2) {
+            new_array[current_length] = i;
+            current_length++;
+        }
+        return new_array;
+    }
+    //
+    //5-Створіть метод, який сортує будь який масив int[] методом вибору.
+    public int[] insert_sort(int[] arr) {
+        int i, j, tmp;
+        int[] tmp_arr = arr.clone();
+        for (i = 1; i < tmp_arr.length; i++) {
+            tmp = tmp_arr[i];
+            for (j = i - 1; j >= 0 && tmp_arr[j] > tmp; j--)
+                tmp_arr[j + 1] = tmp_arr[j];
+            tmp_arr[j + 1] = tmp;
+        }
+        return tmp_arr;
+    }
+
     public static void main(String[] args) {
-        Main m = new Main();
-        //1++ -Створіть метод, який дозволяє видаляти будь який елемент по індексу
-        // в одновимірному масиві int[] Новий масив повинен повертатися з методу.
-        int[] arr = new int[]{1,2,3,4,5};
-        System.out.println(Arrays.toString(m.deleteArray(arr,2)));
-        //
-        //2++ - Створіть метод, який дозволяє порівняти 2 будь яких масиви int[] по складу.
-        // Масиви можуть відрізнятися по порядку елементів , но бути однаковими зі складу.
-        int[] arr1=new int[]{1,2,3,4,5};
-        int[] arr2=new int[]{5,4,3,2,1};
-        m.compareArr(arr1,arr2);
-        //
-        //3-Створіть метод , який може перевернути будь яку число int .
-        // Приклад - 357 на вході, метод поверне 753
-        int number = 822;
-        m.intReverse(number);
-        //
-        //4-Створіть метод, який дозволяє поєднати між собою
-        // масиви int[] та повернути результуючий масив з методу
-        int[] arr3 = new int[]{1,4,5,6};
-        int[] arr4 = new int[]{7,8,9,2};
-        m.combinationArr(arr3,arr4);
-        //
-        //5-Створіть метод, який сортує будь який масив int[] методом вибору.
-        int[] arr5 ={9,8,7,6,5,4,3,2,1};
-        m.selectionSort(arr5);
+        Main m1 = new Main();
+        int[] arr1 = {0, 1, 2, 3, 4};
+
     }
-    public int[] deleteArray(int[] arr, int index)
-    {//1
-        //Массив, который будет содержать результат
-        int[] res = new int[arr.length - 1 ];
-        arrayCopy(arr, 0 , res, 0, index);
-        arrayCopy(arr,index+1,res,index,arr.length-index-1);
-        return res;
-    }
-    public void compareArr(int[] arr1, int[] arr2)
-    {//2
-        // Сортировка arr1
-        sortArr(arr1);
-        //Сортировка arr2
-        sortArr(arr2);
-        boolean b = true;
-        if (arr1 != null & arr2 != null){
-            if (arr1.length != arr2.length)
-                b = false;
-            else
-                for (int i = 0; i < arr2.length; i++) {
-                    if (arr2[i] != arr1[i]) {
-                        b = false;
-                    }
-                }
-        }else{
-            b = false;
+
+    @ParameterizedTest(name = "Test №{index}: element deleted on index {0}")
+    @ValueSource(ints = {-1, 0, 4, 5})
+    void check1(int index) {
+        int[] arr = {0, 1, 2, 3, 4};
+        try {
+            delete_element(index, arr);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+            Assert.fail();
         }
-        System.out.println(b);
     }
-    public int intReverse(int number)
-    {//3
-        String number1 =String.valueOf(number);
-        char[] arr = number1.toCharArray();
-        char[] res = new char[arr.length];
-        //От длины массива отнимается значение.
-        for(int i=0;i<arr.length;i++)
-        {
-            res[res.length - i - 1]=arr[i];
-        }
-        String res1 = new String(res);
-        int res2 = Integer.parseInt(res1);
-        System.out.println(res2);
-        return res2;
+
+    @ParameterizedTest(name = "Test №{index}: {0} and {1} are equals")
+    @MethodSource("provideArraysToCompare")
+    void check2(int[] arr1, int[] arr2) {
+        Assert.assertTrue(compare_arrays(arr1, arr2));
     }
-    public  int[] combinationArr(int[] arr3, int[] arr4)
-    {//4
-        int[] resultarr = new int[arr3.length+arr4.length];
-        for (int i =0;i<resultarr.length;i++)
-        {
-            resultarr[i]=(i<arr3.length? arr3[i]:arr4[i-arr3.length]);
-        }
-        for(int j =0;j<resultarr.length;j++)
-        {
-            System.out.print(resultarr[j]+" ");
-        }
-        return resultarr;
+
+
+    private static Stream<Arguments> provideArraysToCompare() {
+        return Stream.of(
+                Arguments.of(new int[]{1, 2}, new int[]{2, 1}),
+                Arguments.of(new int[]{1, 2, 3, 4, 5}, new int[]{1, 2, 3, 3, 5}),
+                Arguments.of(new int[]{1}, new int[]{1}),
+                Arguments.of(new int[]{1, 2, 3}, new int[]{3, 2, 1})
+        );
     }
-    public int[] selectionSort(int[] arr)
-    {//5
-        for (int i = 0; i < arr.length - 1; i++)
-        {
-            int index = i;
-            for (int j = i + 1; j < arr.length; j++){
-                if (arr[j] < arr[index]){
-                    index = j;//Поиск минимального индекса
-                }
-            }
-            int smallerNumber = arr[index];
-            arr[index] = arr[i];
-            arr[i] = smallerNumber;
-        }
-        System.out.print("\n"+Arrays.toString(arr));
-        return arr;
+
+    @ParameterizedTest(name = "Test №{index}: {1} is reverse of {0}")
+    @CsvSource({"123,321", "111,111", "123,123"})
+    void check3(int input, int expected) {
+        Assert.assertEquals(reverse(input), expected);
     }
-    public static void sortArr(int[] arr)
+
+    @ParameterizedTest(name = "Test №{index}: {0} stick with {1} result => {2}")
+    @MethodSource("provideArraysToStick")
+    void check4(int[] arr1, int[] arr2, int[] expected) {
+        Assert.assertTrue(Arrays.equals(expected, stick_arrays(arr1, arr2)));
+    }
+
+    private static Stream<Arguments> provideArraysToStick() {
+        return Stream.of(
+                Arguments.of(new int[]{1, 2}, new int[]{3, 4}, new int[]{1, 2, 3, 4}),
+                Arguments.of(new int[]{1, 3, 4, 5, 6}, new int[]{3, 4}, new int[]{4, 3, 6, 5, 4, 3, 1}),
+                Arguments.of(new int[]{1}, new int[]{2}, new int[]{1, 2}),
+                Arguments.of(new int[]{1, 2}, new int[]{3, 4}, new int[]{1, 2, 1, 2})
+        );
+    }
+
+    @ParameterizedTest(name = "Test №{index}: {0} sorted => {1}")
+    @MethodSource("provideArraysToSort")
+    void check5(int[] arr, int[] expected) {
+        Assert.assertTrue(Arrays.equals(expected, insert_sort(arr)));
+    }
+
+    private static Stream<Arguments> provideArraysToSort() {
+        return Stream.of(
+                Arguments.of(new int[]{1, 2}, new int[]{1, 2}),
+                Arguments.of(new int[]{3, 2, 1}, new int[]{1, 2, 3}),
+                Arguments.of(new int[]{3, 2, 1, 4, 5}, new int[]{1, 2, 3, 4, 5}),
+                Arguments.of(new int[]{1, 0, -1}, new int[]{-1, 0, 1})
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideIntsToReverse")
+    public  void reverseTest(int number,int expected){
+        Assert.assertEquals(expected,reverse(number));
+    }
+    private static Stream<Arguments> provideIntsToReverse()
     {
-        for(int i = 0;i<arr.length;i++) {//является ли первый элемент минимальным?
-            int min = arr[i];
-            int min_i = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                // Если находим, то записываем индекс
-                if (arr[j] < min) {
-                    min = arr[j];
-                    min_i = j;
-                }
-            }
-
-            //Если нашелся элемент,который меньше того,что на текущей позиции,то производим
-            if (i != min_i) {
-                int tmp = arr[i];
-                arr[i] = arr[min_i];
-                arr[min_i] = tmp;
-            }
-        }
-    }
-    public static void arrayCopy(int[] src, int srcPos, int[] dest, int destPos, int length) {
-
-        while (length > 0){
-
-            dest[destPos] = src[srcPos];
-
-            srcPos++;
-
-            destPos++;
-
-            length--;
-
-        }
-    }
-    static Stream<String> stringProvider() {
-        return Stream.of("java", "rust");
+        return Stream.of(
+                Arguments.of(123,321),
+                Arguments.of(345,543)
+        );
     }
 }
-
