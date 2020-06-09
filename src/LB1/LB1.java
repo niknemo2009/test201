@@ -3,7 +3,7 @@ package LB1;
 import com.sun.jdi.ArrayReference;
 
 import java.util.Arrays;
-import java.util.Scanner;
+
 
 public class LB1 {
     public static void arrayCopy(int[] src, int srcPos, int[] dest, int destPos, int length) {
@@ -47,7 +47,7 @@ public class LB1 {
         System.out.println(result);
         return result;
     }
-    public static int[] combination(int[] arr3, int[] arr4)
+   public static int[] combination(int[] arr3, int[] arr4)
     {
         //10 Створіть метод, який дозволяє поєднати між собою будь яку кількість масивів int[]
         // та повернути результуючий масив з методу
@@ -136,6 +136,4 @@ public class LB1 {
         System.out.println(Arrays.toString(arr7));
         insertionSort(arr7);
     }
-
-
 }
