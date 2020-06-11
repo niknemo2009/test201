@@ -80,7 +80,7 @@ public class Main {
     }
     //
     //5-Створіть метод, який сортує будь який масив int[] методом вибору.
-    public int[] insert_sort(int[] arr) {
+    public int[] selected_sort(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
         /*Предполагаем, что первый элемент (в каждом
            подмножестве элементов) является минимальным */
@@ -164,7 +164,7 @@ public class Main {
     @DisplayName("Сортировка выбором")
     @MethodSource("provideArraysToSort")
     void check5(int[] arr, int[] expected) {
-        Assert.assertTrue(Arrays.equals(expected, insert_sort(arr)));
+        Assert.assertTrue(Arrays.equals(expected, selected_sort(arr)));
     }
 
     private static Stream<Arguments> provideArraysToSort() {
