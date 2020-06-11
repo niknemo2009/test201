@@ -21,9 +21,9 @@ public class Patinet {
         this.price = price;
     }
 
-    public boolean CheckOrderWith(Patinet animal)
+    public boolean CheckOrderWith(Patinet patient)
     {
-        return (this.gender.equals("Male") && animal.gender.equals("Female"))||(animal.gender.equals("Male") && this.gender.equals("Female"));
+        return (this.gender.equals("Male") && patient.gender.equals("Female"))||(patient.gender.equals("Male") && this.gender.equals("Female"));
     }
 
     public String toString()

@@ -17,22 +17,25 @@ public class Main {
 
     public Main() {
     }
+    public static void arrayCopy(int[] src, int srcPos, int[] dest, int destPos, int length) {
+        while (length > 0){
+            dest[destPos] = src[srcPos];
+            srcPos++;
+            destPos++;
+            length--;
+        }
+    }
     //1++ -Створіть метод, який дозволяє видаляти будь який елемент по індексу
     // в одновимірному масиві int[] Новий масив повинен повертатися з методу.
-    public int[] delete_element(int index, int[] arr) throws ArrayIndexOutOfBoundsException {
-        if (index < 0 || index >= arr.length) {
-            throw new ArrayIndexOutOfBoundsException("Index " + Integer.toString(index) + " out of bounds for length " + Integer.toString(arr.length));
-        }
-        int[] tmp = new int[arr.length - 1];
-        int j = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (i != index) {
-                tmp[j] = arr[i];
-                j++;
-            }
-        }
-        return tmp;
+    public int[] deleteArray(int index,int[] arr)
+    {//1
+        //Массив, который будет содержать результат
+        int[] res = new int[arr.length - 1 ];
+        arrayCopy(arr, 0 , res, 0, index);
+        arrayCopy(arr,index+1,res,index,arr.length-index-1);
+        return arr;
     }
+
     //
     //2++ - Створіть метод, який дозволяє порівняти 2 будь яких масиви int[] по складу.
     // Масиви можуть відрізнятися по порядку елементів , но бути однаковими зі складу.
@@ -43,23 +46,24 @@ public class Main {
         Arrays.sort(arr2);
         return Arrays.equals(arr1, arr2);
     }
+
     //
     //3-Створіть метод , який може перевернути будь яку число int .
     // Приклад - 357 на вході, метод поверне 753
     public int reverse(int number) {
-        String number1 =String.valueOf(number);
+        String number1 = String.valueOf(number);
         char[] arr = number1.toCharArray();
         char[] res = new char[arr.length];
         //От длины массива отнимается значение.
-        for(int i=0;i<arr.length;i++)
-        {
-            res[res.length - i - 1]=arr[i];
+        for (int i = 0; i < arr.length; i++) {
+            res[res.length - i - 1] = arr[i];
         }
         String res1 = new String(res);
         int res2 = Integer.parseInt(res1);
         System.out.println(res2);
         return res2;
     }
+
     //
     //4-Створіть метод, який дозволяє поєднати між собою
     // масиви int[] та повернути результуючий масив з методу
@@ -78,6 +82,7 @@ public class Main {
         }
         return new_array;
     }
+
     //
     //5-Створіть метод, який сортує будь який масив int[] методом вибору.
     public int[] selected_sort(int[] arr) {
@@ -88,7 +93,7 @@ public class Main {
             int min_i = i;
         /*В оставшейся части подмножества ищем элемент,
            который меньше предположенного минимума*/
-            for (int j = i+1; j < arr.length; j++) {
+            for (int j = i + 1; j < arr.length; j++) {
                 //Если находим, запоминаем его индекс
                 if (arr[j] < min) {
                     min = arr[j];
@@ -113,7 +118,7 @@ public class Main {
     void check1(int index) {
         int[] arr = {0, 1, 2, 3, 4};
         try {
-            delete_element(index, arr);
+            deleteArray(index, arr);
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println(e.getMessage());
             Assert.fail();
@@ -123,17 +128,17 @@ public class Main {
     @ParameterizedTest(name = "Тест {index}: {0} и {1} еквивалентны")
     @DisplayName("Сравнение массивов")
     @MethodSource("provideArraysToCompare")
-    void check2(int[] arr1, int[] arr2,int result) {
-        Assert.assertEquals(compare_arrays(arr1, arr2),result);
+    void check2(int[] arr1, int[] arr2, boolean result) {
+        Assert.assertEquals(compare_arrays(arr1, arr2), result);
     }
 
 
     private static Stream<Arguments> provideArraysToCompare() {
         return Stream.of(
-                Arguments.of(new int[]{1, 2}, new int[]{2, 1},true),
-                Arguments.of(new int[]{1, 2, 3, 4, 5}, new int[]{1, 2, 3, 3, 5},false),
-                Arguments.of(new int[]{1}, new int[]{1},true),
-                Arguments.of(new int[]{1, 2, 3}, new int[]{3, 2, 1},true)
+                Arguments.of(new int[]{1, 2}, new int[]{2, 1}, true),
+                Arguments.of(new int[]{1, 2, 3, 4, 5}, new int[]{1, 2, 3, 3, 5}, false),
+                Arguments.of(new int[]{1}, new int[]{1}, true),
+                Arguments.of(new int[]{1, 2, 3}, new int[]{3, 2, 1}, true)
         );
     }
 

@@ -45,16 +45,16 @@ public class Cage {
         }
     }
 
-    public void setPatinet(Patinet animal)
+    public void setPatinet(Patinet patient)
     {
         boolean enemy = false;
         if(this.usedcagecapacity < this.capacity)
         {
-            if(animal.viddil.equals(this.type))
+            if(patient.viddil.equals(this.type))
             {
                 for (Patinet i:this.Patinets)
                 {
-                    if(i.CheckOrderWith(animal))
+                    if(i.CheckOrderWith(patient))
                     {
                         enemy = true;
                     }
@@ -67,10 +67,10 @@ public class Cage {
                         PreparedStatement preparedStmt = connection.prepareStatement(query);
                         preparedStmt.setNull(1, Types.INTEGER);
                         preparedStmt.setInt(2, this.number);
-                        preparedStmt.setNString(3, animal.name);
-                        preparedStmt.setNString(4, animal.gender);
-                        preparedStmt.setNString(5, animal.viddil);
-                        preparedStmt.setInt(6, animal.price);
+                        preparedStmt.setNString(3, patient.name);
+                        preparedStmt.setNString(4, patient.gender);
+                        preparedStmt.setNString(5, patient.viddil);
+                        preparedStmt.setInt(6, patient.price);
                         preparedStmt.executeUpdate();
                         query = ("SELECT USEDCAPACITY FROM CAGES WHERE IDCAGES = " + Integer.toString(number));
                         Statement stmt = connection.createStatement();

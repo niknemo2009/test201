@@ -100,9 +100,9 @@ public class PatinetPanel extends JPanel{
             String namestr = name.getText();
             int cageid = Integer.parseInt(number.getText());
             int priceint = Integer.parseInt(price.getText());
-            Patinet newanimal = new Patinet(namestr,gender,viddil,priceint);
+            Patinet newpatient = new Patinet(namestr,gender,viddil,priceint);
             Cage gcage = new Cage(cageid);
-            gcage.setPatinet(newanimal);
+            gcage.setPatinet(newpatient);
         }
     }
 

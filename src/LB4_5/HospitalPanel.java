@@ -66,9 +66,9 @@ public class HospitalPanel extends JPanel{
     class PatinetListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            HospitalGUI animaladder = new HospitalGUI(400,300, "Patinet adding");
-            animaladder.add(new PatinetPanel());
-            animaladder.setVisible(true);
+            HospitalGUI patientadder = new HospitalGUI(400,300, "Patinet adding");
+            patientadder.add(new PatinetPanel());
+            patientadder.setVisible(true);
         }
     }
 
