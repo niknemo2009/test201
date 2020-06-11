@@ -14,7 +14,7 @@ public class PatinetPanel extends JPanel{
     private JLabel name1 = new JLabel("Номер палати: ");
     private JLabel name2 = new JLabel("Iм`я пацiенту: ");
     private JLabel name3 = new JLabel("Народження: ");
-    private JLabel name4 = new JLabel("Адреса: ");
+    private JLabel name4 = new JLabel("Палата: ");
     private JLabel name5 = new JLabel("Вартість палати: ");
     private JTextField number = new JTextField();
     private JTextField price = new JTextField();
