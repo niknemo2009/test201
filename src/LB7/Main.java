@@ -22,7 +22,6 @@ public class Main {
         -на підставі масиву
         -на підставі колекції
         -на підставі файлу
-        -згенерувати на підставі функції
 	    */
         Stream<String> streamFromValues = Stream.of("a1", "b2", "c3");      // на підставі набору значень
 
@@ -33,15 +32,7 @@ public class Main {
         Stream<String> streamFromCollection = collection.stream();          // на підставі колекції
 
         Stream<String> streamFromFile = Files.lines(Paths.get("surnames.txt")); // на підставі файлу
-        /*
-        131. Змоделювати статистичне дослідження робітничих колективів, щодо гендерного равенства. У робітників є
-        слідуючі характеристики- прізвище, стать, посадовий оклад. Дослідити треба 1000 підприємств,у яких середня
-        зарплатня робітників перевищує 5000 грн. При моделюванні використовувати можливості Stream по генерації та
-        обробці великих обсягів тестових даних(ви повинні згенерувати тестові підприємства). Зарплатня, стать та прізвище
-        робітника при генерації обираються випадково. У результаті моделювання ми повинні отримати інформацію о середній
-        зарплатні робітників-чоловіків та робітників-жінок на кожному підприємстві та відсоток підприємств, на яких середня
-        зарплатня робітників-чоловіків перевищує аналогічний показник для робітників-жінок.
-        */
+
         List<String> surnameList = streamFromFile.collect(Collectors.toList());
         List<SEX> sexList = Arrays.asList(SEX.MALE, SEX.FEMALE);
         List<Enterprise> enterpriseList = Stream.generate(() -> m.get_random_enterprise(surnameList, sexList)).limit(1000).collect(Collectors.toList());
@@ -55,15 +46,7 @@ public class Main {
         System.out.println(enterpriseList.stream().filter(e -> e.workerList.stream().mapToInt(Worker::getSalary).average().getAsDouble() > 5000 &&
         e.workerList.stream().filter(w -> w.getSex() == SEX.MALE).mapToInt(Worker::getSalary).average().getAsDouble() >
         e.workerList.stream().filter(w -> w.getSex() == SEX.FEMALE).mapToInt(Worker::getSalary).average().getAsDouble()).count() * 100 / 1000 + "%");
-        //
-        Double[] arr1 = {1.5, 2.0, 3.2};
-        Double[] arr2 = {1.0, 2.0, 3.0};
-        System.out.println(m.<Double>add(arr1, arr2));
-        Integer[] arr3 = {1, 2, 3};
-        Integer[] arr4 = {4, 5, 6};
-        System.out.println(m.<Integer>add(arr3,arr4));
     }
-
     public Enterprise get_random_enterprise(List<String> surnameList, List<SEX> sexList) {
         Random random = new Random();
         return new Enterprise(Stream.generate(() -> new Worker(surnameList.get(random.nextInt(surnameList.size())),
