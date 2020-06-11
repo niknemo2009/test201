@@ -1,8 +1,6 @@
 package LB6;
-
 import java.util.Arrays;
 import java.util.stream.Stream;
-
 /*import org.junit.Assert;*/
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -49,13 +47,24 @@ public class Main {
     //3-Створіть метод , який може перевернути будь яку число int .
     // Приклад - 357 на вході, метод поверне 753
     public int reverse(int number) {
-        return Integer.parseInt(new StringBuilder(Integer.toString(number)).reverse().toString());
+        String number1 =String.valueOf(number);
+        char[] arr = number1.toCharArray();
+        char[] res = new char[arr.length];
+        //От длины массива отнимается значение.
+        for(int i=0;i<arr.length;i++)
+        {
+            res[res.length - i - 1]=arr[i];
+        }
+        String res1 = new String(res);
+        int res2 = Integer.parseInt(res1);
+        System.out.println(res2);
+        return res2;
     }
     //
     //4-Створіть метод, який дозволяє поєднати між собою
     // масиви int[] та повернути результуючий масив з методу
     public int[] stick_arrays(int[] arr1, int[] arr2) {
-        int general_length = 0;
+        int general_length;
         int current_length = 0;
         general_length = arr1.length + arr2.length;
         int[] new_array = new int[general_length];
@@ -72,24 +81,34 @@ public class Main {
     //
     //5-Створіть метод, який сортує будь який масив int[] методом вибору.
     public int[] insert_sort(int[] arr) {
-        int i, j, tmp;
-        int[] tmp_arr = arr.clone();
-        for (i = 1; i < tmp_arr.length; i++) {
-            tmp = tmp_arr[i];
-            for (j = i - 1; j >= 0 && tmp_arr[j] > tmp; j--)
-                tmp_arr[j + 1] = tmp_arr[j];
-            tmp_arr[j + 1] = tmp;
+        for (int i = 0; i < arr.length; i++) {
+        /*Предполагаем, что первый элемент (в каждом
+           подмножестве элементов) является минимальным */
+            int min = arr[i];
+            int min_i = i;
+        /*В оставшейся части подмножества ищем элемент,
+           который меньше предположенного минимума*/
+            for (int j = i+1; j < arr.length; j++) {
+                //Если находим, запоминаем его индекс
+                if (arr[j] < min) {
+                    min = arr[j];
+                    min_i = j;
+                }
+            }
+        /*Если нашелся элемент, меньший, чем на текущей позиции,
+          меняем их местами*/
+            if (i != min_i) {
+                int tmp = arr[i];
+                arr[i] = arr[min_i];
+                arr[min_i] = tmp;
+            }
+
         }
-        return tmp_arr;
+        return arr;
     }
 
-    public static void main(String[] args) {
-        Main m1 = new Main();
-        int[] arr1 = {0, 1, 2, 3, 4};
-
-    }
-
-    @ParameterizedTest(name = "Test №{index}: element deleted on index {0}")
+    @ParameterizedTest(name = "Тест {index}: элемент удалён по индексу {0}")
+    @DisplayName("Удаление элементов массива по индексу")
     @ValueSource(ints = {-1, 0, 4, 5})
     void check1(int index) {
         int[] arr = {0, 1, 2, 3, 4};
@@ -101,7 +120,8 @@ public class Main {
         }
     }
 
-    @ParameterizedTest(name = "Test №{index}: {0} and {1} are equals")
+    @ParameterizedTest(name = "Тест {index}: {0} и {1} еквивалентны")
+    @DisplayName("Сравнение массивов")
     @MethodSource("provideArraysToCompare")
     void check2(int[] arr1, int[] arr2) {
         Assert.assertTrue(compare_arrays(arr1, arr2));
@@ -117,13 +137,15 @@ public class Main {
         );
     }
 
-    @ParameterizedTest(name = "Test №{index}: {1} is reverse of {0}")
+    @ParameterizedTest(name = "Тест {index}: {1} развёрнутый {0}")
+    @DisplayName("Перевёрнутое число")
     @CsvSource({"123,321", "111,111", "123,123"})
     void check3(int input, int expected) {
         Assert.assertEquals(reverse(input), expected);
     }
 
-    @ParameterizedTest(name = "Test №{index}: {0} stick with {1} result => {2}")
+    @ParameterizedTest(name = "Тест {index}: {0} вместе с  {1} даёт результат = {2}")
+    @DisplayName("Соединение массивов")
     @MethodSource("provideArraysToStick")
     void check4(int[] arr1, int[] arr2, int[] expected) {
         Assert.assertTrue(Arrays.equals(expected, stick_arrays(arr1, arr2)));
@@ -138,7 +160,8 @@ public class Main {
         );
     }
 
-    @ParameterizedTest(name = "Test №{index}: {0} sorted => {1}")
+    @ParameterizedTest(name = "Тест {index}: {0} отсортированный = {1}")
+    @DisplayName("Сортировка выбором")
     @MethodSource("provideArraysToSort")
     void check5(int[] arr, int[] expected) {
         Assert.assertTrue(Arrays.equals(expected, insert_sort(arr)));
@@ -150,19 +173,6 @@ public class Main {
                 Arguments.of(new int[]{3, 2, 1}, new int[]{1, 2, 3}),
                 Arguments.of(new int[]{3, 2, 1, 4, 5}, new int[]{1, 2, 3, 4, 5}),
                 Arguments.of(new int[]{1, 0, -1}, new int[]{-1, 0, 1})
-        );
-    }
-
-    @ParameterizedTest
-    @MethodSource("provideIntsToReverse")
-    public  void reverseTest(int number,int expected){
-        Assert.assertEquals(expected,reverse(number));
-    }
-    private static Stream<Arguments> provideIntsToReverse()
-    {
-        return Stream.of(
-                Arguments.of(123,321),
-                Arguments.of(345,543)
         );
     }
 }
