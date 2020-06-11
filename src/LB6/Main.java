@@ -123,17 +123,17 @@ public class Main {
     @ParameterizedTest(name = "Тест {index}: {0} и {1} еквивалентны")
     @DisplayName("Сравнение массивов")
     @MethodSource("provideArraysToCompare")
-    void check2(int[] arr1, int[] arr2) {
-        Assert.assertTrue(compare_arrays(arr1, arr2));
+    void check2(int[] arr1, int[] arr2,int result) {
+        Assert.assertEquals(compare_arrays(arr1, arr2),result);
     }
 
 
     private static Stream<Arguments> provideArraysToCompare() {
         return Stream.of(
-                Arguments.of(new int[]{1, 2}, new int[]{2, 1}),
-                Arguments.of(new int[]{1, 2, 3, 4, 5}, new int[]{1, 2, 3, 3, 5}),
-                Arguments.of(new int[]{1}, new int[]{1}),
-                Arguments.of(new int[]{1, 2, 3}, new int[]{3, 2, 1})
+                Arguments.of(new int[]{1, 2}, new int[]{2, 1},true),
+                Arguments.of(new int[]{1, 2, 3, 4, 5}, new int[]{1, 2, 3, 3, 5},false),
+                Arguments.of(new int[]{1}, new int[]{1},true),
+                Arguments.of(new int[]{1, 2, 3}, new int[]{3, 2, 1},true)
         );
     }
 
