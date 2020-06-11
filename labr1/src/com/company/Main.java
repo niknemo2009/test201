@@ -12,7 +12,7 @@ public class Main {
 	System.out.print(vowelscount("Україна"));
     }
 
-        public static String cyr2lat(char ch){     //Завдання 16
+        public String cyr2lat(char ch){     //Завдання 16
             switch (ch){
                 case 'А': return "A";
                 case 'Б': return "B";
@@ -50,14 +50,14 @@ public class Main {
             }
         }
 
-        public static String cyr2lat(String s){
+        public String cyr2lat(String s){
             StringBuilder sb = new StringBuilder(s.length()*2);
             for(char ch: s.toCharArray()){
                 sb.append(cyr2lat(ch));
             }
             return sb.toString();
         }
-        public static String register(String s){                         // Завдання 17
+        public String register(String s){                         // Завдання 17
         StringBuilder sb = new StringBuilder(s.length()*2);
         char temp;
         for (char ch: s.toCharArray()) {
@@ -72,19 +72,28 @@ public class Main {
         }
         return sb.toString();
         }
-        public static void alphabet_sort(){                            // Завдання 18
-            String[] seasons = new String[] {"Winter", "Summer"};
-            Arrays.sort(seasons);
-            System.out.print("\n" + Arrays.toString(seasons));
+        public void alphabet_sort(){                            // Завдання 18
+            String[] seasons = new String[] {"Winter", "Summer", "Spring", "Autumn"};
+            String temp;
+            for (int j = 0; j < str.length; j++) {
+                for (int i = j + 1; i < str.length; i++) {
+                    if (str[i].compareTo(str[j]) < 0) {
+                        temp = str[j];
+                        str[j] = str[i];
+                        str[i] = temp;
+                    }
+                }
+                System.out.println(str[j]);
+            }
         }
 
-        public static void revers(String s) {                         //Завдання 19
+        public void revers(String s) {                         //Завдання 19
             char[] reverseS = s.toCharArray();
             for (int i = s.length()-1;i>=0;i--){
                 System.out.print(reverseS[i]);
             }
         }
-        public static int vowelscount(String s){                   // Завдання 20
+        public int vowelscount(String s){                   // Завдання 20
         int count = 0;
         for (char ch: s.toCharArray()){
             if (isVowel(ch)==true){
@@ -93,8 +102,8 @@ public class Main {
         }
         return count;
         }
-        public static char[] vowels = new char[]{'а', 'я', 'у', 'ю', 'и', 'і', 'е', 'о', 'є'};
-        public static boolean isVowel(char ch){
+        char[] vowels = new char[]{'а', 'я', 'у', 'ю', 'и', 'і', 'е', 'о', 'є'};
+        public boolean isVowel(char ch){
         ch = Character.toLowerCase(ch);
         for(char c: vowels){
             if (ch==c){
