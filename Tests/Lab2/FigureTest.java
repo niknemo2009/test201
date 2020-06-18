@@ -19,6 +19,7 @@ public class FigureTest{
     @ParameterizedTest(name = "Тест {index} = {5}")
     @DisplayName("Figure square")
     @MethodSource("provideFigure")
+
     void check1(Figure f1, Rectangle r1, Triangle t1, Square s1, Trapeze tz1, int expected) {
 
         Assert.assertEquals(f1.RetSquare(r1, t1, s1, tz1), expected);

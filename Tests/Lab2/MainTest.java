@@ -27,6 +27,7 @@ public class MainTest{
         } catch (Exception e) {
             System.out.println(e.getMessage());
             Assert.fail();
+
         }
     }
 
